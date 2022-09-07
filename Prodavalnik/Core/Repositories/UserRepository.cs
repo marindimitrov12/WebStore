@@ -19,7 +19,7 @@ namespace Prodavalnik.Core.Repositories
             catch (Exception ex)
             {
 
-                this.logger.LogError(ex, "{Repo} GetAll method error", typeof(UserRepository));
+                this._logger.LogError(ex, "{Repo} GetAll method error", typeof(UserRepository));
                 return new List<ApplicationUser>();
             }
         }
@@ -40,7 +40,7 @@ namespace Prodavalnik.Core.Repositories
             }
             catch (Exception ex)
             {
-                this.logger.LogError(ex, "{Repo} Upsert method error", typeof(UserRepository));
+                this._logger.LogError(ex, "{Repo} Upsert method error", typeof(UserRepository));
                 return false;
             }
         }
@@ -59,7 +59,7 @@ namespace Prodavalnik.Core.Repositories
             catch (Exception ex)
             {
 
-                this.logger.LogError(ex, "{Repo} Delete method error", typeof(UserRepository));
+                this._logger.LogError(ex, "{Repo} Delete method error", typeof(UserRepository));
                 return false;
             }
         } 
