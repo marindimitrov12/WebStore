@@ -12,6 +12,7 @@ namespace Prodavalnik.Models
         public decimal Price { get; set; }
         public string Description { get; set; }
 
+        public byte[] Img { get; set; }
         public DateTime AddedOn { get; set; }
         public Categories Category { get; set; }
     }

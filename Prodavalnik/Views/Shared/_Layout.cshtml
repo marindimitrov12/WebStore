@@ -29,7 +29,7 @@
                                 <li><a class="dropdown-item" href="#!">Popular Items</a></li>
                                 <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
                                 @if(User.Identity.IsAuthenticated){
-                                <li><a class="dropdown-item" href="#!">AddItem</a></li>
+                                <li><a class="dropdown-item"  asp-controller="Products" asp-action="Create">AddItem</a></li>
                             }
                         </ul>
                         </li>
