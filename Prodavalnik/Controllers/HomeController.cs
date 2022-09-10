@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Prodavalnik.Core.IConfiguration;
 using Prodavalnik.Models;
 using System.Diagnostics;
 
@@ -7,15 +8,18 @@ namespace Prodavalnik.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IUnitOfWork _unitOfWork;
+      
+        public HomeController(ILogger<HomeController> logger,IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _unitOfWork = unitOfWork;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var product = await _unitOfWork.Product.GetAll();
+            return View(product);
         }
 
         public IActionResult Privacy()
