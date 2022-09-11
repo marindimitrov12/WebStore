@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Prodavalnik.Core.IConfiguration;
 using Prodavalnik.ViewModels;
+using System.Text;
 
 namespace Prodavalnik.Controllers
 {
@@ -40,5 +41,26 @@ namespace Prodavalnik.Controllers
 
             return Redirect("/");
         }
+        [HttpGet]
+        public async Task<IActionResult> Edit(ProductViewModel model)
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit( int id,ProductViewModel model)
+        {
+            var item = await unitOfWork.Product.GetById(id);
+          
+           // item.Img = fileBytes;
+                item.Price = model.Price;
+                item.Category = model.Category;
+                item.AddedOn = DateTime.Now;
+                item.Description = model.Description;
+                item.Name = model.Name;
+            
+            unitOfWork.CompliteAsync();
+            return Redirect("/");
+        }
+
     }
 }

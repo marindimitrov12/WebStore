@@ -24,6 +24,19 @@ namespace Prodavalnik.Core.Repositories
                 return new List<Product>();
             }
         }
+        public async Task<Product> GetById(int id)
+        {
+            try
+            {
+                return await base.GetById(id);
+            }
+            catch (Exception ex)
+            {
+
+                this._logger.LogError(ex, "{Repo} GetById method error", typeof(ProductRepository));
+                return new Product();
+            }
+        }
         public override async Task<bool> Upsert(Product entity)
         {
 
