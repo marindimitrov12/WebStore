@@ -53,6 +53,7 @@ namespace Prodavalnik.Core.Repositories
                 existingProduct.Price=entity.Price;
                 existingProduct.Img=entity.Img;
                 existingProduct.Category=entity.Category;
+                dbSet.Update(existingProduct);
                 return true;
             }
             catch (Exception ex)

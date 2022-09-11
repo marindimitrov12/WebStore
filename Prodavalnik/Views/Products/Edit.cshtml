@@ -1,4 +1,5 @@
 ﻿@model Prodavalnik.ViewModels.ProductViewModel
+
 <!DOCTYPE html>
 <!-- saved from url=(0057)https://technext.github.io/product-admin/add-product.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -29,6 +30,7 @@
                   <div class="form-group mb-3">
                     <label for="name">Product Name
                     </label>
+                    <input asp-for="Id" hidden/>
                     <input asp-for="Name" id="name" name="name"  type="text" class="form-control validate" required="">
                   </div>
                   <div class="form-group mb-3">
@@ -58,7 +60,7 @@
                   </div>
                   <div class="col-12">
                  
-                <button type="submit"  class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
+                <button type="submit"  class="btn btn-primary btn-block text-uppercase">Edit Product Now</button>
               </div>
               </form ></div>
              

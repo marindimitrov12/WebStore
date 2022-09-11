@@ -8,6 +8,7 @@ namespace Prodavalnik.Controllers
     public class ProductsController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
+        
         public ProductsController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
@@ -42,23 +43,44 @@ namespace Prodavalnik.Controllers
             return Redirect("/");
         }
         [HttpGet]
-        public async Task<IActionResult> Edit(ProductViewModel model)
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Edit( int id,ProductViewModel model)
+        public async Task<IActionResult> Edit(int id)
         {
             var item = await unitOfWork.Product.GetById(id);
-          
-           // item.Img = fileBytes;
-                item.Price = model.Price;
-                item.Category = model.Category;
-                item.AddedOn = DateTime.Now;
-                item.Description = model.Description;
-                item.Name = model.Name;
-            
-            unitOfWork.CompliteAsync();
+            return View(new ProductViewModel { Id=item.Id,Name=item.Name,Price=(int)item.Price,
+                Description=item.Description,Img=null,Category=item.Category});
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit( ProductViewModel model)  
+        {
+            long length = 0;
+            var img=model.Img;
+            if (model.Img==null)
+            {
+                length = 200;
+                
+            }
+            else
+            {
+                length = model.Img.Length;
+            }
+           
+            var fileBytes = new byte[length];
+            using (var ms = new MemoryStream())
+            {
+                img.CopyTo(ms);
+                fileBytes = ms.ToArray();
+            }
+            await unitOfWork.Product.Upsert(new Models.Product
+            {
+                Id =model.Id,
+                Description = model.Description,
+                Price = model.Price,
+                Img= fileBytes,
+                Category=model.Category,
+                Name=model.Name,
+                AddedOn=DateTime.Now
+            });
+           await unitOfWork.CompliteAsync();
             return Redirect("/");
         }
 
