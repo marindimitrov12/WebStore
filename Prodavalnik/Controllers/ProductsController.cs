@@ -52,19 +52,11 @@ namespace Prodavalnik.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit( ProductViewModel model)  
         {
-            long length = 0;
+            
             var img=model.Img;
-            if (model.Img==null)
-            {
-                length = 200;
-                
-            }
-            else
-            {
-                length = model.Img.Length;
-            }
+          
            
-            var fileBytes = new byte[length];
+            var fileBytes = new byte[model.Img.Length];
             using (var ms = new MemoryStream())
             {
                 img.CopyTo(ms);
