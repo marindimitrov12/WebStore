@@ -16,10 +16,17 @@ namespace Prodavalnik.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int p = 1)
         {
-            var product = await _unitOfWork.Product.GetAll();
-            return View(product);
+           
+            int pageSize = 3;
+            ViewBag.PageNumber = p;
+            ViewBag.PageRange= pageSize;
+            ViewBag.TotalPages=(int)Math.Ceiling((double)await _unitOfWork.Product.Count()/3);
+            var result = await _unitOfWork.Product.Skip((p - 1) * pageSize);
+            
+            return View(result.Take(pageSize).ToList());
+            
         }
 
         public IActionResult Privacy()

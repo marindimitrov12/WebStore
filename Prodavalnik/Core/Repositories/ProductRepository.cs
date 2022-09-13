@@ -24,6 +24,8 @@ namespace Prodavalnik.Core.Repositories
                 return new List<Product>();
             }
         }
+      
+        
         public async Task<Product> GetById(int id)
         {
             try
@@ -37,6 +39,7 @@ namespace Prodavalnik.Core.Repositories
                 return new Product();
             }
         }
+        
         public override async Task<bool> Upsert(Product entity)
         {
 
