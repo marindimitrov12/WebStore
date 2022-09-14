@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using Prodavalnik.Areas.Identity.Data;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Prodavalnik.Models
 {
@@ -15,5 +18,11 @@ namespace Prodavalnik.Models
         public byte[] Img { get; set; }
         public DateTime AddedOn { get; set; }
         public Categories Category { get; set; }
+
+      
+        public string Owner { get; set; }
+
+        
+
     }
 }

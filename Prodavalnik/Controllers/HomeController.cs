@@ -2,6 +2,7 @@
 using Prodavalnik.Core.IConfiguration;
 using Prodavalnik.Models;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace Prodavalnik.Controllers
 {
@@ -18,7 +19,9 @@ namespace Prodavalnik.Controllers
 
         public async Task<IActionResult> Index(int p = 1)
         {
-           
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewBag.UserId = userId;
+
             int pageSize = 3;
             ViewBag.PageNumber = p;
             ViewBag.PageRange= pageSize;
