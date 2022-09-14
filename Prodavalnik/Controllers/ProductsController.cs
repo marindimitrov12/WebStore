@@ -33,7 +33,7 @@ namespace Prodavalnik.Controllers
                 
             }
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewBag.UserId = userId;
+            
             await unitOfWork.Product.Add(new Models.Product
             {
                 Name = model.Name,
