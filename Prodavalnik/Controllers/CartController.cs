@@ -73,6 +73,21 @@ namespace Prodavalnik.Controllers
 
             return Redirect(HttpContext.Request.Headers["Referer"].ToString());
         }
+        public async Task<IActionResult> Remove(int id)
+        {
+            var product = await _unitOfWork.Product.GetById(id);
+            List<CardItem> cart = HttpContext.Session.GetJson<List<CardItem>>("Cart") ?? new List<CardItem>();
+            CardItem cardItem = cart.Where(p => p.ProductId == id).FirstOrDefault();
+            if (cardItem != null)
+            {
+                cart.Remove(cardItem);
+            }
+           
+            HttpContext.Session.Remove("Cart");
+            TempData["Success"] = "The product has been deleted frome cart!";
+
+            return Redirect(HttpContext.Request.Headers["Referer"].ToString());
+        }
 
 
     }
