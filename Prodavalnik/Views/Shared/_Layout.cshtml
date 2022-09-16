@@ -35,12 +35,14 @@
                     </ul>
                     @if(User.Identity.IsAuthenticated)
                 {
-                    <form class="d-flex">
+                   
+                    <form method="Get" class="d-flex" action="Cart/Index">
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <vc:small-card-view-componenet></vc:small-card-view-componenet>
                         </button>
+                       
+                         
                     </form>
                   
                 }
