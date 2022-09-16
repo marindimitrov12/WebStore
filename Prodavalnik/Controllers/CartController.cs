@@ -42,9 +42,38 @@ namespace Prodavalnik.Controllers
             }
             HttpContext.Session.SetJson("Cart",cart);
             TempData["Success"] = "The product has been added!";
-            _unitOfWork.Dispose();
-            return Redirect("/");
+            
+            return Redirect(HttpContext.Request.Headers["Referer"].ToString());
         }
+        
+               public async Task<IActionResult> Decrease(int id)
+        {
+            List<CardItem> cart = HttpContext.Session.GetJson<List<CardItem>>("Cart") ?? new List<CardItem>();
+            CardItem cardItem = cart.Where(p => p.ProductId == id).FirstOrDefault();
+            if (cardItem.Quantity > 1)
+            {
+                --cardItem.Quantity;
+            }
+            else
+            {
+                cart.RemoveAll(x=>x.ProductId==id);
+            }
+            if (cart.Count==0)
+            {
+                HttpContext.Session.Remove("Cart");
+            }
+            else
+            {
+                HttpContext.Session.SetJson("Cart",cart);
+            }
+               
+            
+            HttpContext.Session.SetJson("Cart", cart);
+            TempData["Success"] = "The product has been added!";
+
+            return Redirect(HttpContext.Request.Headers["Referer"].ToString());
+        }
+
 
     }
 }
