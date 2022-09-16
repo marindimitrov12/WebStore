@@ -29,7 +29,7 @@
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 @if(User.Identity.IsAuthenticated){
-                <div style="margin:5px;" class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                <div style="margin:5px;" class="text-center"><a class="btn btn-outline-dark mt-auto" href="/Cart/Add/@Model.Id">Add to cart</a></div>
                
                 @if(@ViewBag.UserId==@Model.Owner){
                      <div class="text-center"><a class="btn btn-outline-dark mt-auto btn-danger alert-dark"  href="/Products/Edit/@Model.Id">Edit</a></div>

@@ -27,5 +27,24 @@ namespace Prodavalnik.Controllers
             return View(CardVM);
         }
 
+        public async Task<IActionResult> Add(int id)
+        {
+            var product = await _unitOfWork.Product.GetById(id);
+            List<CardItem> cart = HttpContext.Session.GetJson<List<CardItem>>("Cart") ?? new List<CardItem>();
+            CardItem cardItem = cart.Where(p=>p.ProductId==id).FirstOrDefault();
+            if (cardItem == null)
+            {
+                cart.Add(new CardItem(product));
+            }
+            else
+            {
+                cardItem.Quantity += 1;
+            }
+            HttpContext.Session.SetJson("Cart",cart);
+            TempData["Success"] = "The product has been added!";
+            _unitOfWork.Dispose();
+            return Redirect("/");
+        }
+
     }
 }

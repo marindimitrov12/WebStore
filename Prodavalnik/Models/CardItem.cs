@@ -12,11 +12,15 @@
         public byte[] Image { get; set; }
         public CardItem(Product product)
         {
-            this.ProductId = product.Id;
-            this.ProductName = product.Name;
-            this.Image = product.Img;
-            this.Price= product.Price;
-            this.Quantity = 1;
+            if (product!=null)
+            {
+                this.ProductId = product.Id;
+                this.ProductName = product.Name;
+                this.Image = product.Img;
+                this.Price = product.Price;
+                this.Quantity = 1;
+            }
+           
 
         }
     }
