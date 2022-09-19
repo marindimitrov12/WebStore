@@ -88,6 +88,11 @@ namespace Prodavalnik.Controllers
 
             return Redirect(HttpContext.Request.Headers["Referer"].ToString());
         }
+        public async Task<IActionResult> Clear()
+        {
+            HttpContext.Session.Remove("Cart");
+           return Redirect(HttpContext.Request.Headers["Referer"].ToString());
+        }
 
 
     }
