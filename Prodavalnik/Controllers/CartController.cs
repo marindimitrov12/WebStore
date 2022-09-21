@@ -81,7 +81,7 @@ namespace Prodavalnik.Controllers
             if (cardItem != null)
             {
                 cart.Remove(cardItem);
-            }
+            } 
            
             HttpContext.Session.Remove("Cart");
             TempData["Success"] = "The product has been deleted frome cart!";
