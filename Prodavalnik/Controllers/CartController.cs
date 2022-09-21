@@ -93,6 +93,31 @@ namespace Prodavalnik.Controllers
             HttpContext.Session.Remove("Cart");
            return Redirect(HttpContext.Request.Headers["Referer"].ToString());
         }
+      
+        public async Task<IActionResult> CheckOut()
+        {
+            var model = HttpContext.Session.GetJson<List<CardItem>>("Cart");
+            foreach (var item in HttpContext.Session.GetJson<List<CardItem>>("Cart"))
+            {
+                var Order = new Order
+                {
+                    Quantity = model.Count(),
+                    Product = new Product
+                    {
+                        Name=item.ProductName,
+                        Price = item.Price,
+                        Description="",
+                        Img=item.Image,
+                    },
+                    
+                };
+            await _unitOfWork.Order.Add(Order);
+            }
+            await _unitOfWork.CompliteAsync();
+          
+            HttpContext.Session.Remove("Cart");
+            return Redirect(HttpContext.Request.Headers["Referer"].ToString());
+        }
 
 
     }

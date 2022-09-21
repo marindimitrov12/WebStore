@@ -6,6 +6,7 @@ namespace Prodavalnik.Core.IConfiguration
     {
         IUserRepository User { get; }
         IProductRepository Product { get; }
+        IOrderRepository Order { get; }
         Task CompliteAsync();
         void Dispose();
 

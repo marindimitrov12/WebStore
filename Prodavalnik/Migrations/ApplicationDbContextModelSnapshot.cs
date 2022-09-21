@@ -250,7 +250,7 @@ namespace Prodavalnik.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("Prodavalnik.Models.Product", b =>
@@ -292,7 +292,7 @@ namespace Prodavalnik.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -11,6 +11,7 @@ namespace Prodavalnik.Data
         private readonly ILogger _logger;
         public IUserRepository User { get; private set; }
         public IProductRepository Product { get; private set; }
+        public IOrderRepository Order { get; private set; }
 
         public UnitOfWork(ApplicationDbContext context,
             ILoggerFactory loggerFactory)
@@ -19,6 +20,7 @@ namespace Prodavalnik.Data
             _logger = loggerFactory.CreateLogger("logs");
             User=new UserRepository(_context, _logger);
             Product=new ProductRepository(_context, _logger);
+            Order=new OrderRepository(_context, _logger);
         }
         public async Task CompliteAsync()
         {
