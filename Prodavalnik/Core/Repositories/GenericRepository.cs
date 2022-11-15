@@ -6,6 +6,7 @@ namespace Prodavalnik.Core.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
+      
         protected ApplicationDbContext _context;
         protected DbSet<T> dbSet;
         protected readonly ILogger _logger;

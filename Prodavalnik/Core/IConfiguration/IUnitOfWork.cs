@@ -8,6 +8,7 @@ namespace Prodavalnik.Core.IConfiguration
         IProductRepository Product { get; }
         IOrderRepository Order { get; }
         Task CompliteAsync();
+        Task DisposeAsync();
         void Dispose();
 
     }
