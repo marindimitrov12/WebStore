@@ -49,7 +49,7 @@ namespace Prodavalnik.Controllers
 
 
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
