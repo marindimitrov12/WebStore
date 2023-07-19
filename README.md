@@ -4,8 +4,11 @@ Users can register and log in, after which they have access to their profile pag
 
 # Technologies
 -ASP.Net.Core MVC
+
 -Ef Core
+
 -Moq
+
 -XUnit
 
 # WebSite
