@@ -22,7 +22,9 @@ Users can register and log in, after which they have access to their profile pag
 
 ![image](https://github.com/marindimitrov12/WebStore/assets/63950527/3609ec85-d88e-4152-a1ce-7b84271e63b5)
 
+
 ![image](https://github.com/marindimitrov12/WebStore/assets/63950527/0ee1f850-d2e1-4a69-856d-78950569d96c)
+
 
 ![image](https://github.com/marindimitrov12/WebStore/assets/63950527/d7c949e0-b7ca-4a17-8c98-044cf6a5aca8)
 
