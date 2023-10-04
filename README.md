@@ -1,7 +1,7 @@
 # Description
 The project is online store for selling second hand products.Тhe home page shows all the products with basic information about them.
 Users can register and log in, after which they have access to their profile page. Еach user has their own shopping cart and favorite page where it can add and remove products.
-
+ 
 # Technologies
 -ASP.Net.Core MVC
 
